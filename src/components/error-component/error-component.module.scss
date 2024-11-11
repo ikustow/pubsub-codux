@@ -1,4 +1,4 @@
-@import '@styles/theme.module.scss';
+@use '@styles/theme.module.scss';
 
 .root {
     display: flex;
@@ -9,7 +9,6 @@
 }
 
 .heading1 {
-    font: $title-font;
 }
 
 .link {

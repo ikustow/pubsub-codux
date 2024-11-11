@@ -1,4 +1,4 @@
-@import '../../../src/styles/theme.module.scss';
+@use '../../../src/styles/theme.module.scss';
 .root {
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     text-align: center;
     font-family: Courier, monospace;
     padding-top: 48px;
-    color: $charcoal-black;
+
 }
 .input-style {
     padding: 1px;

@@ -3,7 +3,8 @@ import { getUrlOriginWithPath } from '~/utils';
 import styles0 from './route.module.scss';
 import { useState } from 'react';
 import { useNavigate } from '@remix-run/react';
-import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
+import { signInWithEmailAndPassword } from '@firebase/auth';
+import { authFirebase } from './firebaseConfig';
 
 
 export const loader = ({ request }: LoaderFunctionArgs) => {
@@ -11,17 +12,14 @@ export const loader = ({ request }: LoaderFunctionArgs) => {
 };
 
 export default function HomePage() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const auth = getAuth();
-
         try {
-            await signInWithEmailAndPassword(auth, email, password);
+            await signInWithEmailAndPassword(authFirebase, email, password);
             navigate('/Dashboard');
         } catch (error) {
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -30,27 +28,31 @@ export default function HomePage() {
         }
     };
 
-
     return (
         <div className={styles0.root}>
             <div className={styles0.container}>
                 <h1 className={styles0.header1}>Vacation Manager</h1>
                 <div className={styles0.spacer} />
-                <input type="text" placeholder="Login"
-                       className={styles0['input-style']}
-                       value={email}
-                       onChange={(e) => setEmail(e.target.value)}
+                <input
+                    type="text"
+                    placeholder="Login"
+                    className={styles0['input-style']}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className={styles0.spacer} />
-                <input type="password"
-                       placeholder="Password"
-                       className={styles0['input-style']}
-                       value={password}
-                       onChange={(e) => setPassword(e.target.value)}
+                <input
+                    type="password"
+                    placeholder="Password"
+                    className={styles0['input-style']}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                 />
                 {error && <p style={{ color: 'red' }}>{error}</p>}
                 <div className={styles0.div1}>
-                    <button onClick={handleLogin}  className={styles0['signin-button']}>Sign In</button>
+                    <button onClick={handleLogin} className={styles0['signin-button']}>
+                        Sign In
+                    </button>
                 </div>
             </div>
         </div>
@@ -61,8 +63,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     const title = 'Blank Starter';
     const description = 'Welcome to the Blank Starter';
     const imageUrl = 'https://website-starter.com/og-image.png';
-
-
 
     return [
         { title },
