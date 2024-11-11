@@ -1,5 +1,5 @@
 node_modules
-firebaseConfig.js
+app/firebase/firebaseConfig.js
 /.cache
 /public/build
 /build
