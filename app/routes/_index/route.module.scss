@@ -1,0 +1,56 @@
+@import '../../../src/styles/theme.module.scss';
+.root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f4f1f1;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+}
+.container {
+    height: 50vh;
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    background-color: #98b1ff;
+    border-radius: 15px;
+}
+.header1 {
+    text-align: center;
+    font-family: Courier, monospace;
+    padding-top: 48px;
+    color: $charcoal-black;
+}
+.input-style {
+    padding: 1px;
+    width: 200px;
+    margin: 10px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: start;
+}
+.spacer {
+    padding: 8px;
+}
+.div1 {
+    padding: 16px 8px 8px;
+}
+.signin-button {
+    width: 220px;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #0056b3;
+    }
+}
